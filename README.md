@@ -1,18 +1,38 @@
 ## Installation
 
-<p>WARNING: Apabila kalian belum menginstall git maka harap install dulu di <a href="https://git-scm.com/" target="_blank">Download GIT</a></p>
-<img src="https://git-scm.com/images/logo@2x.png" alt="git">
-<ul>
-    <li>Buka terminal.</li>
-    <li>cd ke folder yang menyimpan project Laravel kalian.</li>
-    <li>run "git clone https://github.com/elylialya/Elibin.git".</li>
-    <li>run "composer install".</li>
-    <li>run "npm install".</li>
-    <li>run "cp .env.example .env".</li>
-    <li>run "php artisan key:generate".</li>
-    <li>run "php artisan migrate".</li>
-    <li>run "php artisan migrate:fresh --seed".</li>
-</ul>
+**WARNING:** If you haven't installed Git, please install it first from [Download GIT](https://git-scm.com/)
 
+![git](https://git-scm.com/images/logo@2x.png)
+
+1. Buka terminal.
+2. cd ke folder yang menyimpan project Laravel kalian.
+3. Jalankan perintah berikut:
+    ```
+    git clone https://github.com/elylialya/Elibin.git
+    ```
+4. Jalankan perintah berikut:
+    ```
+    composer install
+    ```
+5. Jalankan perintah berikut:
+    ```
+    npm install
+    ```
+6. Jalankan perintah berikut:
+    ```
+    cp .env.example .env
+    ```
+7. Jalankan perintah berikut:
+    ```
+    php artisan key:generate
+    ```
+8. Jalankan perintah berikut:
+    ```
+    php artisan migrate
+    ```
+9. Jalankan perintah berikut:
+    ```
+    php artisan migrate:fresh --seed
+    ```
 
 ## Documentation
