@@ -1,4 +1,4 @@
-## Installation
+## Installation First
 
 **WARNING:** If you haven't installed Git, please install it first from [Download GIT](https://git-scm.com/)
 
@@ -36,3 +36,8 @@
     ```
 
 ## Documentation
+
+This project uses Laravel for the backend and TailwindCSS for the frontend so that application development applies OOP, MVC, and uses independent styles and referenced styles.
+
+![git](https://cdn.icon-icons.com/icons2/2699/PNG/512/laravel_logo_icon_170314.png) ![git](https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170649.png)
+
