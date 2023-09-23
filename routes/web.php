@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index', [
-        'title' => 'Dashboard',
-        'active' => 'dashboard'
-    ]);
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/registration', [AuthController::class, 'registration']);
