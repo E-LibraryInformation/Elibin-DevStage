@@ -17,7 +17,7 @@
                     <div>
                         <div class="p-4 flex justify-center flex-wrap gap-6">
                             @foreach($books as $book)
-                            <a href="" class="bg-slate-800 border border-white rounded-lg w-44 h-max overflow-hidden hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+                            <a href="/book/{{ $book->id }}" class="bg-slate-800 border border-white rounded-lg w-44 h-max overflow-hidden hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                                 <div>
                                     <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" class="w-44">
                                 </div>
@@ -25,11 +25,26 @@
                                     <div class="text-slate-400 text-xs">
                                         ID: {{ $book->id }}
                                     </div>
-                                    <div class="font-bold w-full h-10 text-sm">
+                                    <div class="font-bold w-full h-10 text-xs">
                                         {{ $book->judul }}
                                     </div>
+                                    <div>
+                                        <p class="text-xs">{{ Str::words($book->sinopsis, 2, '...') }}</p>
+                                    </div>
+                                    <div class="text-xs h-8">
+                                        Penulis: <span class="text-slate-400">{{ $book->penulis }}</span>
+                                    </div>
                                     <div class="text-xs">
-                                        Penulis: <span  class="text-slate-400">{{ $book->penulis }}</span>
+                                        Rak: <span class="text-sky-400">{{ $book->rak }}</span>
+                                    </div>
+                                    <div class="text-xs">
+                                        Stok: <span class="text-slate-400">{{ $book->stok }}</span>
+                                    </div>
+                                    <div class="text-xs">
+                                        Status : <span class="font-semibold {{ ($book->status === 'Available') ? 'text-lime-400' : 'text-red-400' }}">{{ $book->status }}</span>
+                                    </div>
+                                    <div class="text-xs">
+                                        @include('partials.rating')
                                     </div>
                                 </div>
                             </a>
@@ -39,6 +54,5 @@
                 </div>
             </div>
         </div>
-        <div></div>
     </div>
 @endsection

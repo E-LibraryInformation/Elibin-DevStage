@@ -7,9 +7,9 @@ use App\Models\Book;
 
 class DashboardController extends Controller
 {
-    public function index() 
+    public function index()
     {
-        $books = Book::orderBy('id', 'desc')->take(5)->get();
+        $books = Book::orderBy('rating', 'desc')->take(5)->get();
         return view('dashboard.index', [
             'title' => 'Elibin | Dashboard',
             'active' => 'dashboard',

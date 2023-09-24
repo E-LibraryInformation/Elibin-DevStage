@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
 
+Route::get('/books', [BookController::class, 'index']);
+Route::get('/book/{id}', [BookController::class, 'detail']);
+Route::get('/cariBuku', [BookController::class, 'cariBuku']);
+
 Route::get('/registration', [AuthController::class, 'registration']);
+Route::get('/login', [AuthController::class, 'login']);
+

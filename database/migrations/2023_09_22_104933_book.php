@@ -20,8 +20,10 @@ return new class extends Migration
                 'Available',
                 'Unavailable'
             ]);
-            $table->text('gambar');
             $table->string('penulis', 125);
+            $table->text('rak');
+            $table->string('rating', 10);
+            $table->text('gambar');
             // $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
+
     }
 };

@@ -7,7 +7,7 @@
             <a href="/" class="{{ ($active === 'dashboard') ? 'border-b border-slate-300' : '' }}">Dashboard</a>
         </li>
         <li>
-            <a href="#">Books</a>
+            <a href="/books" class="{{ ($active === 'books') ? 'border-b border-slate-300' : '' }}">Books</a>
         </li>
         <li>
             <a href="#">Penulis</a>
