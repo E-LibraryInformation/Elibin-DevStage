@@ -22,9 +22,11 @@ Route::get('/books', [BookController::class, 'index']);
 Route::get('/book/{id}', [BookController::class, 'detail']);
 Route::get('/cariBuku', [BookController::class, 'cariBuku']);
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'loginApp']);
-Route::get('/registration', [AuthController::class, 'registration']);
-Route::post('/registration', [AuthController::class, 'createAccount']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'loginApp']);
+    Route::get('/registration', [AuthController::class, 'registration']);
+    Route::post('/registration', [AuthController::class, 'createAccount']);
+});
 
 
