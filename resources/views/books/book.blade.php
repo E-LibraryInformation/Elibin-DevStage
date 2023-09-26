@@ -18,7 +18,7 @@
             by <a href="#" class="text-sky-400">{{ $book->penulis }}</a>
         </div>
         <div class="text-sm">
-            @include('partials.rating')
+            @include('partials.rating') <span class="text-yellow-400">{{ $book->rating }}</span>
         </div>
         <div class="text-sm flex flex-row gap-2">
             <div>

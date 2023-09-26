@@ -9,7 +9,7 @@
         <div class="p-4">
             <div class="text-xl">Elibin</div>
         </div>
-        <div class="p-4 flex flex-wrap justify-center gap-24">
+        <div class="p-4 flex flex-wrap justify-center gap-4">
             <div class="bg-slate-600 border rounded-lg w-full h-max p-4">
                 <form action="/cariBuku" method="get">
                     @csrf
@@ -47,7 +47,7 @@
                         Status : <span class="font-semibold {{ ($book->status === 'Available') ? 'text-lime-400' : 'text-red-400' }}">{{ $book->status }}</span>
                     </div>
                     <div class="text-xs">
-                        @include('partials.rating')
+                        @include('partials.rating') <span class="text-yellow-400">{{ $book->rating }}</span>
                     </div>
                 </div>
             </a>

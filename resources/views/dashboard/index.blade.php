@@ -44,7 +44,7 @@
                                         Status : <span class="font-semibold {{ ($book->status === 'Available') ? 'text-lime-400' : 'text-red-400' }}">{{ $book->status }}</span>
                                     </div>
                                     <div class="text-xs">
-                                        @include('partials.rating')
+                                        @include('partials.rating') <span class="text-yellow-400">{{ $book->rating }}</span>
                                     </div>
                                 </div>
                             </a>
