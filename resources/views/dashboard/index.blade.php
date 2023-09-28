@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="flex flex-row text-white gap-1 items-center">
+    <div class="flex flex-row text-white gap-1 items-center p-2">
         <a href="/" class="text-sky-400">Dashboard</a>/
     </div>
     <div class="bg-slate-800 w-full h-max border rounded-md shadow-md text-slate-300">
@@ -17,22 +17,22 @@
                     <div>
                         <div class="p-4 flex justify-center flex-wrap gap-6">
                             @foreach($books as $book)
-                            <a href="/book/{{ $book->id }}" class="bg-slate-800 border border-white rounded-lg w-44 h-max overflow-hidden hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+                            <a href="/book/{{ $book->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                                 <div>
-                                    <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" class="w-44">
+                                    <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" class="w-48">
                                 </div>
                                 <div class="p-2 text-sm text-slate-300 flex flex-col">
                                     <div class="text-slate-400 text-xs">
                                         ID: {{ $book->id }}
                                     </div>
-                                    <div class="font-bold w-full h-10 text-xs">
-                                        {{ $book->judul }}
+                                    <div class="font-bold w-full text-xs">
+                                        {{  substr($book->judul, 0, 16) . '...' }}
                                     </div>
                                     <div>
-                                        <p class="text-xs">{{ Str::words($book->sinopsis, 2, '...') }}</p>
+                                        <p class="text-xs">{{ substr($book->sinopsis, 0, 6) . '...' }}</p>
                                     </div>
-                                    <div class="text-xs h-8">
-                                        Penulis: <span class="text-slate-400">{{ $book->penulis }}</span>
+                                    <div class="text-xs">
+                                        Penulis: <span class="text-slate-400">{{ substr($book->penulis, 0, 6) . '...' }}</span>
                                     </div>
                                     <div class="text-xs">
                                         Rak: <span class="text-sky-400">{{ $book->rak }}</span>

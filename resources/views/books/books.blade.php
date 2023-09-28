@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="flex flex-row text-white gap-1 items-center">
+    <div class="flex flex-row text-white gap-1 items-center p-2">
         <a href="/" class="text-sky-400">Dashboard</a>/
         <a href="/books" class="text-sky-400">Books</a>
     </div>
@@ -20,7 +20,7 @@
                 </form>
             </div>
             @foreach ($books as $book)
-            <a href="/book/{{ $book->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-80 overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+            <a href="/book/{{ $book->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                 <div>
                     <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" class="w-48">
                 </div>
@@ -29,13 +29,13 @@
                         ID: {{ $book->id }}
                     </div>
                     <div class="font-bold w-full text-xs">
-                        {{  Str::words($book->judul, 2, '...') }}
+                        {{  substr($book->judul, 0, 16) . '...' }}
                     </div>
                     <div>
-                        <p class="text-xs">{{ Str::words($book->sinopsis, 2, '...') }}</p>
+                        <p class="text-xs">{{ substr($book->sinopsis, 0, 6) . '...' }}</p>
                     </div>
                     <div class="text-xs">
-                        Penulis: <span class="text-slate-400">{{ Str::words($book->sinopsis, 1, '...') }}</span>
+                        Penulis: <span class="text-slate-400">{{ substr($book->penulis, 0, 6) . '...' }}</span>
                     </div>
                     <div class="text-xs">
                         Rak: <span class="text-sky-400">{{ $book->rak }}</span>

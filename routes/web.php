@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ Route::get('/books', [BookController::class, 'index']);
 Route::get('/book/{id}', [BookController::class, 'detail']);
 Route::get('/cariBuku', [BookController::class, 'cariBuku']);
 
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login']);
     Route::post('/login', [AuthController::class, 'loginApp']);
@@ -29,4 +31,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/registration', [AuthController::class, 'createAccount']);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('profile', [ProfileController::class, 'index']);
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
