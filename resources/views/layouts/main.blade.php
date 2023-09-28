@@ -10,7 +10,7 @@
 </head>
 <body class="bg-slate-700">
     @include('partials.navbar')
-    <div class="w-full p-8 flex flex-col justify-center">
+    <div class="w-full md:p-8 flex flex-col justify-center">
         @yield('container')
     </div>
     {{-- @include('partials.footer') --}}

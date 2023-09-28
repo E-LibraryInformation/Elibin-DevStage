@@ -53,7 +53,7 @@ class AuthController extends Controller
             $user->password = Hash::make($validatedData['password']);
             $user->gambar = 'storage/users/default.jpg'; // Menambahkan nilai default ke kolom 'gambar'
             $user->save();
-            return redirect('/');
+            return redirect('/login');
         } else {
             return back()->withErrors(['message' => 'Konfirmasi password tidak sesuai'])->withInput();
         }

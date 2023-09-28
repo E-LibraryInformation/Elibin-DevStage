@@ -1,4 +1,4 @@
-Rating: <span class="text-yellow-400">
+<span class="text-yellow-400">
     @if ($book->rating >= 1)
         <i class="fa-solid fa-star"></i>
     @elseif ($book->rating >= 0.5)
