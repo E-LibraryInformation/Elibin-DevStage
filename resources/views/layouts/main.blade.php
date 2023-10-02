@@ -15,5 +15,7 @@
     </div>
     {{-- @include('partials.footer') --}}
     <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('js/profile.js') }}"></script>
+    <script src="{{ asset('js/user.js') }}"></script>
 </body>
 </html>

@@ -16,12 +16,19 @@ return new class extends Migration
             $table->string('fullname', 100);
             $table->string('username', 35)->unique();
             $table->string('password');
+            $table->string('bio')->default('Hai, aku pengguna baru di Elibin, nice to meet you');
             $table->enum('role', [
                 'pembaca',
                 'penulis',
                 'pustakawan',
                 'admin'
             ])->default('pembaca');
+            $table->enum('account', [
+                'reguler',
+                'premium'
+            ])->default('reguler');
+            $table->integer('followers')->default(0);
+            $table->integer('following')->default(0);
             $table->text('gambar');
             $table->timestamps();
         });

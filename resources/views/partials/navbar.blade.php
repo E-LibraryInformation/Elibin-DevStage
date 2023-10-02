@@ -10,7 +10,7 @@
             <a href="/books" class="{{ ($active === 'books') ? 'border-b border-slate-300' : '' }}">Books</a>
         </li>
         <li>
-            <a href="#">Penulis</a>
+            <a href="/writers" class="{{ ($active === 'penulis') ? 'border-b border-slate-300' : '' }}">Penulis</a>
         </li>
         <li>
             <a href="#">Perpustakaan</a>
@@ -26,7 +26,7 @@
         @auth
         <li class="flex flex-col">
             <button class="flex flex-row items-center gap-2" onclick="toggleDownUser()">
-                <img src="{{ asset(Auth::user()->gambar) }}" alt="{{ Auth::user()->username }}" class="w-6 rounded-full">
+                <img src="{{ asset(Auth::user()->gambar) }}" alt="{{ Auth::user()->username }}" class="w-8 h-7 rounded-full">
                 <div>
                     <span class="text-slate-200">{{ Auth::user()->username }} |</span>
                     @switch(Auth::user()->role)

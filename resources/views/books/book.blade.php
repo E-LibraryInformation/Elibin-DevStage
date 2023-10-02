@@ -4,7 +4,7 @@
 <div class="flex flex-row text-white gap-1 items-center p-2">
     <a href="/" class="text-sky-400">Dashboard</a>/
     <a href="/books" class="text-sky-400">Books</a>/
-    <a href="/book/{{ $book->id }}" class="text-sky-400">Detail</a>
+    <a href="/book/{{ $book->id }}" class="text-sky-400">{{ $book->judul }}</a>
 </div>
 <div class="bg-slate-800 border rounded-lg p-4 flex flex-col md:flex-row">
     <div class="flex justify-center">

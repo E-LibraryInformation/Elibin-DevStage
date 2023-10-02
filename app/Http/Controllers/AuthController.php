@@ -59,7 +59,7 @@ class AuthController extends Controller
             $user->fullname = $validatedData['fullname'];
             $user->username = $validatedData['username'];
             $user->password = Hash::make($validatedData['password']);
-            $user->gambar = 'storage/users/default.jpg'; // Menambahkan nilai default ke kolom 'gambar'
+            $user->gambar = 'https://image.popbela.com/content-images/post/20180530/22581812-136183890464103-4232093720725422080-n-920c4758ecb290f88731b4ee13a159ce.jpg?width=1600&format=webp&w=1600'; // Menambahkan nilai default ke kolom 'gambar'
             $user->save();
             return redirect('/login');
         } else {
