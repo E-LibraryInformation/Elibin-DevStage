@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WriterController;
@@ -26,6 +27,7 @@ Route::get('/book/{id}', [BookController::class, 'detail']);
 Route::get('/cariBuku', [BookController::class, 'cariBuku']);
 Route::get('/writers', [WriterController::class, 'index']);
 Route::get('/writer/{id}', [WriterController::class, 'detail']);
+Route::get('/follower/{id}', [FollowController::class, 'followers']);
 
 
 Route::middleware(['guest'])->group(function () {

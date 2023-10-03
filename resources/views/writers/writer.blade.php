@@ -19,7 +19,7 @@
                 {{ $writer->role }}
             </div>
             <div class="flex flex-wrap justify-center gap-2 text-slate-300 md:flex-row">
-                <span>Follower : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $follower }}</a></span>|
+                <span>Follower : <a href="/follower/{{ $writer->id }}" class="hover:text-sky-400 hover:duration-150">{{ $follower }}</a></span>|
                 <span>Following : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $following }}</a></span>
             </div>
             <form action="/follow/{{ $writer->id }}" method="post" class="w-full text-center">

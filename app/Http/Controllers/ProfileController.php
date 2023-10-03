@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+
     public function index()
     {
-        return view('profile.profile', [
-            'title' => 'Profile',
-            'active' => 'none'
+        $user = auth()->user();
+        $followersCount = $user->followers()->count();
+        $followingCount = $user->following()->count();
+    
+        return view('profile.index', [
+            'title' => 'Elibin | Profile',
+            'active' => NULL,
+            'user' => $user,
+            'followersCount' => $followersCount,
+            'followingCount' => $followingCount,
         ]);
     }
 
