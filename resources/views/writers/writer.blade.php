@@ -9,7 +9,7 @@
 <div class="bg-slate-800 border rounded-lg justify-between p-4 flex flex-col gap-5 lg:flex-row">
     <div class="w-full h-[473px]} bg-slate-700 rounded-lg flex flex-col justify-center p-5 lg:w-72">
         <div class="p-5 flex justify-center">
-            <img src="{{ $writer->gambar }}" alt="{{ $writer->fullname }}" class="border-2 rounded-full w-40 h-40 md:w-56 md:h-52">
+            <img src="{{ $writer->gambar }}" alt="{{ $writer->fullname }}" class="border-2 rounded-full w-40 h-24  md:w-56 md:h-52">
         </div>
         <div class="flex flex-col gap-3">
             <div class="text-center font-bold text-slate-300 text-2xl">
@@ -19,22 +19,24 @@
                 {{ $writer->role }}
             </div>
             <div class="flex flex-wrap justify-center gap-2 text-slate-300 md:flex-row">
-                <span>Follower : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $writer->followers()->count() }}</a></span>|
-                <span>Following : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $writer->following }}</a></span>
+                <span>Follower : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $follower }}</a></span>|
+                <span>Following : <a href="#" class="hover:text-sky-400 hover:duration-150">{{ $following }}</a></span>
             </div>
             <form action="/follow/{{ $writer->id }}" method="post" class="w-full text-center">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <button type="submit" class="text-center text-white font-medium rounded-lg p-1 bg-sky-500 w-full hover:bg-sky-400 hover:duration-150">
-                    @auth
-                        @if (Auth::user()->following && Auth::user()->following->contains($writer->id))
-                            Unfollow
-                        @else
-                            Follow
-                        @endif
-                    @endauth
-                </button>
-            </form>
+                @if($writer->id !== Auth::user()->id)
+                    <button type="submit" class="text-center text-white font-medium rounded-lg p-1 bg-sky-500 w-full hover:bg-sky-400 hover:duration-150">
+                        @auth
+                            @if ($isFollowing)
+                                Unfollow
+                            @else
+                                Follow
+                            @endif
+                        @endauth
+                    </button>
+                @endif
+            </form>                       
         </div>
     </div>
     <div class="w-full h-[473px] bg-slate-700 rounded-lg flex flex-col p-5 lg:w-3/5">
