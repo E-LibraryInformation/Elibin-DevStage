@@ -15,7 +15,7 @@
                         <div class="flex flex-row justify-center gap-4">
                             <span>Followers : {{ $followersCount }}</span>|
                             <span>Following : {{ $followingCount }}</span>
-                        </div>            
+                        </div>
                     </div>
                     <div class="flex flex-col grow gap-4">
                         <div class="flex flex-col">
@@ -36,7 +36,7 @@
                             <p class="w-full text-slate-400"><span class="uppercase text-sky-400">pembaca</span> adalah role default yang kami berikan, apabila anda ingin mengubahnya menjadi <span class="uppercase text-red-400">penulis</span> atau <span class="uppercase text-yellow-400">pustakawan</span> maka diperlukan akses dari role <span class="uppercase text-purple-400">ADMIN</span>. <a href="#" class="text-sky-400">pelajari lebih lanjut</a></p>
                         </div>
                         <div class="flex flex-col justify-end">
-                            <button type="submit" class="bg-sky-500 rounded-lg p-2 text-slate-800 w-36 font-medium hover:bg-sky-400 hover:duration-150" id="simpanButton" disabled>Simpan</button>
+                            <button type="submit" class="bg-sky-500 text-white rounded-lg p-2 w-36 font-medium hover:bg-sky-400 hover:duration-150" id="simpanButton" disabled>Simpan</button>
                         </div>
                     </div>
                 </form>
