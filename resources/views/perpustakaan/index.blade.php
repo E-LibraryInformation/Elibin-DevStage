@@ -18,7 +18,7 @@
                     <i class="fa-solid fa-school text-8xl"></i>
                 </div>
             </a>
-            <a href="/perpustakaan/pustakawan" class="bg-sky-500 text-white w-72 rounded-lg mb-6 hover:bg-sky-400 hover:duration-150">
+            <a href="/perpustakaan/librarians" class="bg-sky-500 text-white w-72 rounded-lg mb-6 hover:bg-sky-400 hover:duration-150">
                 <div class="p-4 w-full">
                     <h5 class="font-bold border-b">Pustakawan({{ $jumlahPustakawan }})</h5>
                 </div>

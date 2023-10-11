@@ -40,6 +40,16 @@
                         </div>
                     </div>
                 </form>
+                <div class="p-4">
+                    <div class="w-full h-max bg-slate-700 border rounded-lg flex flex-col gap-3 p-3">
+                        <a href="/books/blacklist/{{ Auth::user()->id }}" class="bg-red-500 w-full h-max border rounded-lg p-4 text-white font-semibold hover:bg-red-400 hover:duration-150">
+                            <i class="fa-solid fa-book-skull"></i> Blacklist({{ $countBlacklist }})
+                        </a>
+                        <a href="" class="bg-yellow-500 w-full h-max border rounded-lg p-4 text-white font-semibold hover:bg-yellow-400 hover:duration-150">
+                            <i class="fa-solid fa-bookmark"></i> Bookmark
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

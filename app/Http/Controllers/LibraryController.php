@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Follow;
 
 class LibraryController extends Controller
 {
@@ -17,13 +18,43 @@ class LibraryController extends Controller
         ]);
     }
 
-    public function librarians()
+    public function librarians(Request $request)
     {
-        $librarians = User::paginate(20);
+        $librarians = User::where('role', 'pustakawan')->paginate(20);
+
+        $search = $request->input('cariPustakawan');
+
+        $librarians = User::where('role', 'pustakawan')
+            ->where('fullname', 'like', "%$search%")
+            ->paginate(10);
+
+        $followerCounts = [];
+        $followingCounts = [];
+
+        // Create an empty array to store follower and following counts for each writer
+        $followerCounts = [];
+        $followingCounts = [];
+
+        foreach ($librarians as $librarian) {
+            // Get the follower count for the current writer
+            $followerCount = Follow::where('follows_user_id', $librarian->id)->count();
+
+            // Get the following count for the current writer
+            $followingCount = Follow::where('user_id', $librarian->id)->count();
+
+            // Add the counts to the respective arrays
+            $followerCounts[$librarian->id] = $followerCount;
+            $followingCounts[$librarian->id] = $followingCount;
+        }
+
         return view('perpustakaan.actions.librarians', [
             'title' => 'Elibin | Pustakawan',
             'active' => 'perpustakaan',
-            'librarians' => $librarians
+            'librarians' => $librarians,
+            'followerCounts' => $followerCounts,
+            // Pass the follower counts to the view
+            'followingCounts' => $followingCounts,
+            // Pass the following counts to the view
         ]);
     }
 

@@ -2,53 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Follow;
 
 class ProfileController extends Controller
 {
-
-    public function index()
+    public function index($id)
     {
+        $account = User::find($id);
         $user = auth()->user();
-        $followersCount = $user->followers()->count();
-        $followingCount = $user->following()->count();
+
     
-        return view('profile.index', [
-            'title' => 'Elibin | Profile',
+        // Check if the user is following the account
+        $isFollowing = Follow::where('user_id', $user->id)
+            ->where('follows_user_id', $account->id)
+            ->exists();
+    
+        $followerCount = Follow::where('follows_user_id', $id)->count();
+        $followingCount = Follow::where('user_id', $id)->count();
+    
+        return view('profile.public', [
+            'title' => 'Elibin | Penulis',
             'active' => NULL,
-            'user' => $user,
-            'followersCount' => $followersCount,
-            'followingCount' => $followingCount,
+            'account' => $account,
+            'follower' => $followerCount,
+            'following' => $followingCount,
+            'isFollowing' => $isFollowing, 
         ]);
-    }
-
-    public function editProfile(Request $request)
-    {
-        // Validasi input
-        $validatedData = $request->validate([
-            'fullname' => 'required',
-            'username' => 'required|unique:users,username,' . auth()->user()->id, // Untuk menghindari validasi unik pada diri sendiri
-            'bio' => 'nullable',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Contoh validasi untuk gambar profil
-        ]);
-
-        // Simpan perubahan ke dalam database
-        $user = auth()->user();
-        $user->fullname = $validatedData['fullname'];
-        $user->username = $validatedData['username'];
-        $user->bio = $validatedData['bio'];
-
-        // Periksa apakah ada gambar profil yang diunggah
-        if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('users', 'public');
-            $user->gambar = 'storage/' . $imagePath;
-        }
-
-        $user->save();
-
-        return redirect('/profile')->with('success', 'Profil berhasil diperbarui.');
-    }
-
-
+    }    
 }

@@ -56,7 +56,7 @@
                     </div>
                     <div class="md:p-4 flex flex-wrap justify-center gap-4">
                         @foreach ($writers as $writer)
-                        <a href="/writer/{{ $writer->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+                        <a href="/profile/{{ $writer->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                             <div>
                                 <img src="{{ $writer->gambar }}" alt="{{ $writer->fullname }}" class="w-48">
                             </div>
@@ -73,9 +73,10 @@
                                 <div class="text-xs">
                                     <span class="text-red-400 uppercase font-bold">{{ $writer->role }}</span>
                                 </div>
-                                {{-- <div class="text-xs">
-                                    @include('partials.rating') <span class="text-yellow-400">{{ $writer->rating }}</span>
-                                </div> --}}
+                                <div class="text-xs flex flex-row gap-2">
+                                    <span>Followers : {{ $followerCounts[$writer->id] }}</span>|
+                                    <p>Following: {{ $followingCounts[$writer->id] }}</p>
+                                </div>
                             </div>
                         </a>
                         @endforeach

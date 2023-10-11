@@ -9,12 +9,18 @@
         <span class="text-xl">Elibin</span>
     </div>
     <div class="w-full h-max flex flex-col">
-        <div class="text-sm text-center mt-3">
-            Penulis Terpopuler
-        </div>
         <div class="md:p-4 flex flex-wrap justify-center gap-6">
+            <div class="bg-slate-600 border rounded-lg w-full h-max p-4">
+                <form action="/cariPenulis" method="get">
+                    @csrf
+                    <div id="search" class="flex gap-0">
+                        <input type="text" id="cariPenulis" name="cariPenulis" class="w-full rounded-l-lg p-2 text-black lg:w-1/2 focus:outline-sky-400" placeholder="Cari Penulis...">
+                        <button type="submit" class="bg-sky-500 text-white p-2 rounded-r-lg hover:bg-sky-400 hover:duration-150"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
             @foreach ($writers as $writer)
-            <a href="/writer/{{ $writer->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+            <a href="/profile/{{ $writer->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                 <div>
                     <img src="{{ $writer->gambar }}" alt="{{ $writer->fullname }}" class="w-48">
                 </div>

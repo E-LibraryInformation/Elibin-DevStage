@@ -4,16 +4,16 @@
     </div>
     <ul class="hidden lg:flex flex-row p-12 text-slate-300 gap-8">
         <li>
-            <a href="/" class="{{ ($active === 'dashboard') ? 'border-b border-slate-300' : '' }}">Dashboard</a>
+            <a href="/" class="{{ ($active === 'dashboard') ? 'border-b border-slate-300' : '' }}">Home</a>
         </li>
         <li>
             <a href="/books" class="{{ ($active === 'books') ? 'border-b border-slate-300' : '' }}">Books</a>
         </li>
         <li>
-            <a href="/writers" class="{{ ($active === 'penulis') ? 'border-b border-slate-300' : '' }}">Penulis</a>
+            <a href="/writers" class="{{ ($active === 'penulis') ? 'border-b border-slate-300' : '' }}">Writers</a>
         </li>
         <li>
-            <a href="/perpustakaan" class="{{ $active === 'perpustakaan' ? 'border-b border-slate-300' : '' }}">Perpustakaan</a>
+            <a href="/perpustakaan" class="{{ $active === 'perpustakaan' ? 'border-b border-slate-300' : '' }}">Library</a>
         </li>
     </ul>
     <ul class="hidden lg:block">
@@ -49,7 +49,7 @@
             </button>
             <ul id="downUser" class="bg-slate-600 w-48 h-max border rounded-lg fixed top-14 text-white flex-col gap-1 p-2 z-10 hidden">
                 <li>
-                    <a href="/profile"><i class="w-4 fa-solid fa-user"></i> Profile</a>
+                    <a href="/account"><i class="w-4 fa-solid fa-user"></i> Profile</a>
                 </li>
                 <li>
                     @if (Auth::user()->role === 'pustakawan' || Auth::user()->role === 'admin')

@@ -8,9 +8,15 @@ use App\Models\Follow;
 
 class WriterController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $writers = User::where('role', 'penulis')->paginate(10);
+        $writers = User::where('role', 'penulis')->paginate(20);
+
+        $search = $request->input('cariPenulis');
+
+        $writers = User::where('role', 'penulis')
+            ->where('fullname', 'like', "%$search%")
+            ->paginate(20);
     
         // Create an empty array to store follower and following counts for each writer
         $followerCounts = [];
@@ -34,30 +40,6 @@ class WriterController extends Controller
             'writers' => $writers,
             'followerCounts' => $followerCounts, // Pass the follower counts to the view
             'followingCounts' => $followingCounts, // Pass the following counts to the view
-        ]);
-    }    
-    
-
-    public function detail($id)
-    {
-        $writer = User::where('role', 'penulis')->find($id);
-        $user = auth()->user();
-    
-        // Check if the user is following the writer
-        $isFollowing = Follow::where('user_id', $user->id)
-            ->where('follows_user_id', $writer->id)
-            ->exists();
-    
-        $followerCount = Follow::where('follows_user_id', $id)->count();
-        $followingCount = Follow::where('user_id', $id)->count();
-    
-        return view('writers.writer', [
-            'title' => 'Elibin | Penulis',
-            'active' => 'penulis',
-            'writer' => $writer,
-            'follower' => $followerCount,
-            'following' => $followingCount,
-            'isFollowing' => $isFollowing, 
         ]);
     }    
     
