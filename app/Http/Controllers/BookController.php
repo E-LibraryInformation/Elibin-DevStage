@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::paginate(14);
+        $books = Book::paginate(10);
         return view('books.books', [
             'title' => 'Elibin | Books',
             'active' => 'books',

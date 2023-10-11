@@ -13,7 +13,7 @@
             <a href="/writers" class="{{ ($active === 'penulis') ? 'border-b border-slate-300' : '' }}">Penulis</a>
         </li>
         <li>
-            <a href="#">Perpustakaan</a>
+            <a href="/perpustakaan" class="{{ $active === 'perpustakaan' ? 'border-b border-slate-300' : '' }}">Perpustakaan</a>
         </li>
     </ul>
     <ul class="hidden lg:block">

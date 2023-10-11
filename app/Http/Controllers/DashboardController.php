@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         $books = Book::orderBy('rating', 'desc')->take(5)->get();
-        $writers = User::where('role', 'penulis')->paginate(6);
+        $writers = User::where('role', 'penulis')->paginate(5);
         return view('dashboard.index', [
             'title' => 'Elibin | Dashboard',
             'active' => 'dashboard',

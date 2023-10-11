@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WriterController;
@@ -28,6 +29,10 @@ Route::get('/cariBuku', [BookController::class, 'cariBuku']);
 Route::get('/writers', [WriterController::class, 'index']);
 Route::get('/follower/{id}', [FollowController::class, 'followers']);
 
+Route::get('/perpustakaan', [LibraryController::class, 'index']);
+Route::get('/perpustakaan/information', [LibraryController::class, 'information']);
+Route::get('/perpustakaan/librarians', [LibraryController::class, 'librarians']);
+Route::get('/perpustakaan/librarian/{id}', [LibraryController::class, 'librarian']);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login']);
