@@ -20,19 +20,19 @@
                     <div class="flex flex-col grow gap-4">
                         <div class="flex flex-col">
                             <label for="fullname">Fullname</label>
-                            <input class="placeholder:text-slate-800 text-slate-800 w-full p-2 rounded-lg" type="text" id="fullname" name="fullname" placeholder="{{ Auth::user()->fullname }}" value="{{ Auth::user()->fullname }}">
+                            <input class="placeholder:text-white text-white w-full p-2 rounded-lg bg-slate-700 border" type="text" id="fullname" name="fullname" placeholder="{{ Auth::user()->fullname }}" value="{{ Auth::user()->fullname }}">
                         </div>
                         <div class="flex flex-col">
                             <label for="username">Username</label>
-                            <input class="placeholder:text-slate-800 text-slate-800 w-full p-2 rounded-lg" type="text" id="username" name="username" placeholder="{{ Auth::user()->username }}" value="{{ Auth::user()->username }}">
+                            <input class="placeholder:text-white text-white w-full p-2 rounded-lg bg-slate-700 border" type="text" id="username" name="username" placeholder="{{ Auth::user()->username }}" value="{{ Auth::user()->username }}">
                         </div>
                         <div class="flex flex-col">
                             <label for="bio">Bio</label>
-                            <textarea class="placeholder:text-slate-800 text-slate-800 w-full p-2 rounded-lg" type="text" id="bio" name="bio" placeholder="{{ Auth::user()->bio }}">{{ Auth::user()->bio }}</textarea>
+                            <textarea class="placeholder:text-white text-white w-full p-2 rounded-lg bg-slate-700 border" type="text" id="bio" name="bio" placeholder="{{ Auth::user()->bio }}">{{ Auth::user()->bio }}</textarea>
                         </div>
                         <div class="flex flex-col">
                             <label for="role">Role</label>
-                            <input class="placeholder:text-slate-800 placeholder:uppercase text-slate-800 w-full p-2 rounded-lg" type="text" id="role" name="role" readonly placeholder="{{ Auth::user()->role }}">
+                            <input class="placeholder:text-white placeholder:uppercase text-white w-full p-2 rounded-lg bg-slate-700 border" type="text" id="role" name="role" readonly placeholder="{{ Auth::user()->role }}">
                             <p class="w-full text-slate-400"><span class="uppercase text-sky-400">pembaca</span> adalah role default yang kami berikan, apabila anda ingin mengubahnya menjadi <span class="uppercase text-red-400">penulis</span> atau <span class="uppercase text-yellow-400">pustakawan</span> maka diperlukan akses dari role <span class="uppercase text-purple-400">ADMIN</span>. <a href="#" class="text-sky-400">pelajari lebih lanjut</a></p>
                         </div>
                         <div class="flex flex-col justify-end">
@@ -45,8 +45,8 @@
                         <a href="/books/blacklist/{{ Auth::user()->id }}" class="bg-red-500 w-full h-max border rounded-lg p-4 text-white font-semibold hover:bg-red-400 hover:duration-150">
                             <i class="fa-solid fa-book-skull"></i> Blacklist({{ $countBlacklist }})
                         </a>
-                        <a href="" class="bg-yellow-500 w-full h-max border rounded-lg p-4 text-white font-semibold hover:bg-yellow-400 hover:duration-150">
-                            <i class="fa-solid fa-bookmark"></i> Bookmark
+                        <a href="/books/bookmark/{{ Auth::user()->id }}" class="bg-yellow-500 w-full h-max border rounded-lg p-4 text-white font-semibold hover:bg-yellow-400 hover:duration-150">
+                            <i class="fa-solid fa-bookmark"></i> Bookmark({{ $countBookmark }})
                         </a>
                     </div>
                 </div>

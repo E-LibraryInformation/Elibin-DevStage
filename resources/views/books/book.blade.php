@@ -34,18 +34,25 @@
             <p class="font-semibold">{{ $book->sinopsis }}</p>
         </div>
         <div class="mt-6 flex flex-wrap gap-6">
-            <a href="/pinjam/{{ $book->id }}" class="bg-sky-500 w-max h-max p-4 rounded-lg text-slate-100 font-semibold hover:bg-sky-600 hover:duration-150">
+            <a href="/books/borrow/{{ $book->id }}" class="bg-sky-500 w-max h-max p-4 rounded-lg text-slate-100 font-semibold hover:bg-sky-600 hover:duration-150">
                 <i class="fa-solid fa-book"></i> Lakukan Peminjaman
             </a>
-            <form action="/blacklist/{{ $book->id }}" method="post">
+            <form action="{{ $bookIsBlacklisted ? '/unblacklist/'.$book->id : '/blacklist/'.$book->id }}" method="post">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <button type="submit" class="bg-red-500 w-max h-max p-4 rounded-lg text-slate-100 font-semibold hover:bg-red-600 hover:duration-150">
-                    <i class="fa-solid fa-book-skull"></i> Blacklist Buku
-                </button>
+                    <i class="fa-solid fa-book-skull"></i> {{ $bookIsBlacklisted ? 'Unblacklist' : 'Blacklist' }} Buku
+                </button>                
+            </form>  
+            <form action="{{ $bookIsBookmarked ? '/unbookmark/'.$book->id : '/bookmark/'.$book->id }}" method="post">
+                @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <button type="submit" class="bg-yellow-500 w-max h-max p-4 rounded-lg text-slate-900 font-semibold hover:bg-yellow-600 hover:duration-150">
+                    <i class="fa-solid fa-bookmark"></i> {{ $bookIsBookmarked ? 'In Bookmark' : 'Bookmark' }}
+                </button>                
             </form>            
-            <a href="#" class="bg-yellow-500 w-max h-max p-4 rounded-lg text-slate-900 font-semibold hover:bg-yellow-600 hover:duration-150"><i class="fa-solid fa-bookmark"></i> Bookmark</a>
         </div>
     </div>
 </div>

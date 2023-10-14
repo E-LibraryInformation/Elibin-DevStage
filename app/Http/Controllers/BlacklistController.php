@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blacklist;
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 class BlacklistController extends Controller
 {

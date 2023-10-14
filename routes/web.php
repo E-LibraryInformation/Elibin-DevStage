@@ -3,10 +3,12 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\ProfileController;
@@ -46,13 +48,20 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('account', [AccountController::class, 'index']);
-    Route::post('account', [AccountController::class, 'editProfile']);
+    Route::get('/account', [AccountController::class, 'index']);
+    Route::post('/account', [AccountController::class, 'editProfile']);
     Route::get('/profile/{id}', [ProfileController::class, 'index']);
     Route::post('/follow/{id}', [UserController::class, 'follow'])->name('follow');
     // Route::post('/unfollow/{id}', [UserController::class, 'unfollow'])->name('unfollow');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/blacklist/{id}', [BookController::class, 'blacklist']);
     Route::get('/books/blacklist/{id}', [BlacklistController::class, 'index']);
+    Route::post('/unblacklist/{id}', [BookController::class, 'unblacklist']);
+    Route::get('/books/bookmark/{id}', [BookmarkController::class, 'index']);
+    Route::post('/bookmark/{id}', [BookController::class, 'bookmark']);
+    Route::post('/unbookmark/{id}', [BookController::class, 'unbookmark']);
+    Route::get('/upgrade', [PremiumController::class, 'index']);
+    Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
+    Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
 });
 

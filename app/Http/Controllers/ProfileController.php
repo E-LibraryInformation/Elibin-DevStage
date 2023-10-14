@@ -32,3 +32,4 @@ class ProfileController extends Controller
         ]);
     }    
 }
+Route::post('/bookmark/{id}', [BookController::class, 'bookmark']);

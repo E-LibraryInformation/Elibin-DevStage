@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Blacklist;
+use App\Models\Bookmark;
 use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
@@ -17,6 +18,7 @@ class AccountController extends Controller
         $followingCount = $user->following()->count();
 
         $countBlacklist = Blacklist::where('user_id', Auth::user()->id)->count();
+        $countBookmark = Bookmark::where('user_id', Auth::user()->id)->count();
     
         return view('profile.index', [
             'title' => 'Elibin | Profile',
@@ -24,7 +26,8 @@ class AccountController extends Controller
             'user' => $user,
             'followersCount' => $followersCount,
             'followingCount' => $followingCount,
-            'countBlacklist' => $countBlacklist
+            'countBlacklist' => $countBlacklist,
+            'countBookmark' => $countBookmark
         ]);
     }
 
