@@ -53,7 +53,7 @@
                 </li>
                 <li>
                     @if (Auth::user()->role === 'pustakawan' || Auth::user()->role === 'admin')
-                        <a href="/dashboard"><i class="w-4 fa-solid fa-table-columns"></i> Dashboard</a>
+                        <a href="/admin"><i class="w-4 fa-solid fa-table-columns"></i> Dashboard Admin</a>
                     @endif
                 </li>
                 <li>

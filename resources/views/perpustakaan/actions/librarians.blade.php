@@ -22,9 +22,9 @@
                 </form>
             </div>
             @foreach ($librarians as $librarian)
-            <a href="/profile/{{ $librarian->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+            <a href="/profile/{{ $librarian->id }}" class="bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200 2xl:w-72">
                 <div>
-                    <img src="{{ $librarian->gambar }}" alt="{{ $librarian->fullname }}" class="w-48">
+                    <img src="{{ $librarian->gambar }}" alt="{{ $librarian->fullname }}" class="w-max">
                 </div>
                 <div class="p-2 text-sm text-slate-300 flex flex-col">
                     <div class="text-slate-400 text-xs">

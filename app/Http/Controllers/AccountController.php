@@ -19,7 +19,7 @@ class AccountController extends Controller
 
         $countBlacklist = Blacklist::where('user_id', Auth::user()->id)->count();
         $countBookmark = Bookmark::where('user_id', Auth::user()->id)->count();
-    
+
         return view('profile.index', [
             'title' => 'Elibin | Profile',
             'active' => NULL,
@@ -55,7 +55,7 @@ class AccountController extends Controller
 
         $user->save();
 
-        return redirect('/profile')->with('success', 'Profil berhasil diperbarui.');
+        return redirect('/account')->with('success', 'Profil berhasil diperbarui.');
     }
 
 

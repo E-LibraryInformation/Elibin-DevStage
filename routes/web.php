@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\BookController;
@@ -63,5 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upgrade', [PremiumController::class, 'index']);
     Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
+    Route::get('/admin', [AdminController::class, 'index']);
 });
 
