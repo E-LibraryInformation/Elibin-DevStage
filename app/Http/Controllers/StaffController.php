@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Borrow;
 
-class AdminController extends Controller
+class StaffController extends Controller
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class AdminController extends Controller
         $countUser = User::where('role', 'pembaca')->count();
         $countBorrowings = Borrow::count();
         return view('admin.index', [
-            'title' => 'Elibin | Admin',
+            'title' => 'Elibin | Staff',
             'active' => NULL,
             'countAdmin' => $countAdmin,
             'countUser' => $countUser,

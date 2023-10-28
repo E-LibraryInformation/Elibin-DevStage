@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PremiumController;
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upgrade', [PremiumController::class, 'index']);
     Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
-    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/staff', [StaffController::class, 'index']);
+    Route::get('/staff/librarians', [LibrarianController::class, 'index']);
 });
 
