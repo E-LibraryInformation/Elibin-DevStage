@@ -43,7 +43,7 @@ Route::get('/perpustakaan/librarians', [LibraryController::class, 'librarians'])
 Route::get('/perpustakaan/cariPustakawan', [LibraryController::class, 'librarians']);
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [AuthController::class, 'login']);
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginApp']);
     Route::get('/registration', [AuthController::class, 'registration']);
     Route::post('/registration', [AuthController::class, 'createAccount']);
@@ -67,5 +67,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
     Route::get('/staff', [StaffController::class, 'index']);
     Route::get('/staff/librarians', [LibrarianController::class, 'index']);
+    Route::get('/staff/librarians/borrowing', [LibrarianController::class, 'borrowing']);
+    Route::post('/confirmBorrow/{id}', [LibrarianController::class, 'confirmBorrow']);
+    Route::get('/staff/librarians/borrowed', [LibrarianController::class, 'borrowed']);
+    Route::post('/confirmEnd/{id}', [LibrarianController::class, 'confirmEnd']);
 });
 
