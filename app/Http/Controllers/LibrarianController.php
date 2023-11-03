@@ -75,5 +75,30 @@ class LibrarianController extends Controller
         return redirect()->back();
     }
 
+    public function books()
+    {
+        $books = Book::orderBy('id', 'desc')->get();
+        return view('admin.librarians.actions.books', [
+            'title' => 'Elibin | Managements Books',
+            'active' => 'librarians',
+            'books' => $books
+        ]);
+    }
+
+    public function create()
+    {
+        return view('admin.librarians.actions.create', [
+            'title' => 'Elibin | Create Data',
+            'active' => 'librarians'
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'judul' => 'required|max:40',
+            'sinopsis' => 'required'
+        ]);
+    }
 
 }

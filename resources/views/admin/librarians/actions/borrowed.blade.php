@@ -44,17 +44,18 @@
                                 </td>
                                 <td class="py-4">
                                     @php
-                                        $daysLeft = $borrowing->hari - now()->diffInDays($borrowing->created_at);
+                                        $adjustedTime = now()->subMinutes(60);
+                                        $daysLeft = $borrowing->hari - now()->diffInDays($adjustedTime);
                                         $textColor = $daysLeft >= 0 ? 'text-sky-500' : 'text-red-500';
                                         echo '<span class="' . $textColor . '">' . $daysLeft . '</span>';
                                     @endphp
                                 </td>
                                 <td class="py-4 font-bold">
                                     @php
-                                    $status = $daysLeft >= 0 ? 'DIPINJAM' : 'OVERDUE';
-                                    $textColorStatus = $status === 'DIPINJAM' ? 'text-lime-500' : 'text-red-500';
-                                    echo '<span class="' . $textColorStatus . '">' . $status . '</span>';
-                                @endphp
+                                        $status = $daysLeft >= 0 ? 'DIPINJAM' : 'OVERDUE';
+                                        $textColorStatus = $status === 'DIPINJAM' ? 'text-lime-500' : 'text-red-500';
+                                        echo '<span class="' . $textColorStatus . '">' . $status . '</span>';
+                                    @endphp
                                 </td>
                                 <td>
                                     <form action="/confirmEnd/{{ $borrowing->id }}" method="post">

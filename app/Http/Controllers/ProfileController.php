@@ -13,23 +13,22 @@ class ProfileController extends Controller
         $account = User::find($id);
         $user = auth()->user();
 
-    
+
         // Check if the user is following the account
         $isFollowing = Follow::where('user_id', $user->id)
             ->where('follows_user_id', $account->id)
             ->exists();
-    
+
         $followerCount = Follow::where('follows_user_id', $id)->count();
         $followingCount = Follow::where('user_id', $id)->count();
-    
+
         return view('profile.public', [
             'title' => 'Elibin | Penulis',
             'active' => NULL,
             'account' => $account,
             'follower' => $followerCount,
             'following' => $followingCount,
-            'isFollowing' => $isFollowing, 
+            'isFollowing' => $isFollowing,
         ]);
-    }    
+    }
 }
-Route::post('/bookmark/{id}', [BookController::class, 'bookmark']);

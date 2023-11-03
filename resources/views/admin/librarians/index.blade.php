@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-users-line text-white mt-4 text-6xl"></i>
                     </div>
                 </a>
-                <a href="" class="bg-yellow-500 w-2/5 h-max rounded-lg flex flex-col lg:w-[200px] hover:bg-yellow-400 hover:duration-150">
+                <a href="/staff/librarians/books" class="bg-yellow-500 w-2/5 h-max rounded-lg flex flex-col lg:w-[200px] hover:bg-yellow-400 hover:duration-150">
                     <div class="p-2">
                         <h5 class="text-white font-semibold border-b border-white text-sm">Buku</h5>
                     </div>

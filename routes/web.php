@@ -71,5 +71,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/confirmBorrow/{id}', [LibrarianController::class, 'confirmBorrow']);
     Route::get('/staff/librarians/borrowed', [LibrarianController::class, 'borrowed']);
     Route::post('/confirmEnd/{id}', [LibrarianController::class, 'confirmEnd']);
+    Route::get('/staff/librarians/books', [LibrarianController::class, 'books']);
+    Route::get('/staff/librarians/books/create', [LibrarianController::class, 'create']);
+    Route::post('/staff/librarians/books/create', [LibrarianController::class, 'store']);
 });
 
