@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Follow;
+use App\Models\Book;
+use App\Models\Library;
 
 class LibraryController extends Controller
 {
@@ -63,6 +65,28 @@ class LibraryController extends Controller
         return view('perpustakaan.actions.information', [
             'title' => 'Elibin | Informasi',
             'active' => 'perpustakaan'
+        ]);
+    }
+
+    public function log()
+    {
+        $books = Book::orderBy('id', 'desc')->get();
+        return view('perpustakaan.actions.log', [
+            'title' => 'Elibin | Blacklist',
+            'active' => 'perpustakaan',
+            'books' => $books
+        ]);
+    }
+
+    public function library() 
+    {
+        $library = Library::first();
+        $countBooks = Book::count();
+        return view('perpustakaan.actions.library', [
+            'title' => 'Elibin | Library',
+            'active' => 'perpustakaan',
+            'library' => $library,
+            'countBooks' => $countBooks
         ]);
     }
 }

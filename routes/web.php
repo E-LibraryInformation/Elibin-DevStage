@@ -42,6 +42,9 @@ Route::get('/perpustakaan', [LibraryController::class, 'index']);
 Route::get('/perpustakaan/information', [LibraryController::class, 'information']);
 Route::get('/perpustakaan/librarians', [LibraryController::class, 'librarians']);
 Route::get('/perpustakaan/cariPustakawan', [LibraryController::class, 'librarians']);
+Route::get('/perpustakaan/information/log', [LibraryController::class, 'log']);
+Route::get('/perpustakaan/information/libprofile', [LibraryController::class, 'library']);
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -66,9 +69,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upgrade', [PremiumController::class, 'index']);
     Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
+
     // Rute akses Admin & Librarians
     Route::get('/staff', [StaffController::class, 'index']);
     // -----------------------------
+
     // Rute akses khusus Librarians
     Route::get('/staff/librarians', [LibrarianController::class, 'index']);
     Route::get('/staff/librarians/borrowing', [LibrarianController::class, 'borrowing']);
@@ -80,6 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/staff/librarians/books/create', [LibrarianController::class, 'store']);
     Route::get('/edit/{id}', [LibrarianController::class, 'edit']);
     // ----------------------------
+
     // Rute akses khusus Admin
     Route::get('/staff/admin', [AdminController::class, 'index']);
     Route::get('/staff/admin/library', [AdminController::class, 'library']);

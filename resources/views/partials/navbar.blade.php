@@ -1,6 +1,6 @@
 <div class="bg-slate-800 w-full h-14 flex justify-between items-center">
     <div class="flex flex-row text-white text-2xl p-12">
-        <span class="font-medium">Elibin</span>
+        <a href="/" class="font-medium">{{ $library->library }}</a>
     </div>
     <ul class="hidden lg:flex flex-row p-12 text-slate-300 gap-8">
         <li>
