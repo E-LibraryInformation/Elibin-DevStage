@@ -15,7 +15,7 @@ class LibrarianController extends Controller
         $countBorrowing = Borrow::count();
         $countBorrowed = Borrowing::where('status', '!=', 'confirmed')->count();
         $books = Book::orderBy('id', 'desc')->paginate(5);
-        return view('admin.librarians.index', [
+        return view('staff.librarians.index', [
             'title' => 'Elibin | Librarians',
             'active' => 'librarians',
             'countBorrowing' => $countBorrowing,
@@ -27,7 +27,7 @@ class LibrarianController extends Controller
     public function borrowing()
     {
         $datas = Borrow::paginate(20);
-        return view('admin.librarians.actions.borrowing', [
+        return view('staff.librarians.actions.borrowing', [
             'title' => 'Elibin | Borrowing',
             'active' => 'librarians',
             'datas' => $datas
@@ -56,7 +56,7 @@ class LibrarianController extends Controller
             ->where('status', '!=', 'confirmed')
             ->get();
 
-        return view('admin.librarians.actions.borrowed', [
+        return view('staff.librarians.actions.borrowed', [
             'title' => 'Elibin | Borrowed',
             'active' => 'librarians',
             'borrowings' => $borrowings
@@ -78,7 +78,7 @@ class LibrarianController extends Controller
     public function books()
     {
         $books = Book::orderBy('id', 'desc')->get();
-        return view('admin.librarians.actions.books', [
+        return view('staff.librarians.actions.books', [
             'title' => 'Elibin | Managements Books',
             'active' => 'librarians',
             'books' => $books
@@ -87,17 +87,28 @@ class LibrarianController extends Controller
 
     public function create()
     {
-        return view('admin.librarians.actions.create', [
+        return view('staff.librarians.actions.create', [
             'title' => 'Elibin | Create Data',
             'active' => 'librarians'
         ]);
     }
 
-    public function store(Request $request)
+    // SELESAIKAN FRONTEND BARU LANJUT CRUD
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'judul' => 'required|max:40',
+    //         'sinopsis' => 'required'
+    //     ]);
+    // }
+
+    public function edit($id)
     {
-        $validatedData = $request->validate([
-            'judul' => 'required|max:40',
-            'sinopsis' => 'required'
+        $book = Book::find($id);
+        return view('staff.librarians.actions.edit', [
+            'title' => 'Elibin | Edit',
+            'active' => 'librarians',
+            'book' => $book
         ]);
     }
 

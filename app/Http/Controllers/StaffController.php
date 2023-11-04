@@ -14,7 +14,7 @@ class StaffController extends Controller
         $countLibrarians = User::where('role', 'pustakawan')->count();
         $countUser = User::where('role', 'pembaca')->count();
         $countBorrowings = Borrow::count();
-        return view('admin.index', [
+        return view('staff.index', [
             'title' => 'Elibin | Staff',
             'active' => NULL,
             'countAdmin' => $countAdmin,

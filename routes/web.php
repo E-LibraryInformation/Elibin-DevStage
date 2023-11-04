@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\AccountController;
@@ -65,7 +66,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upgrade', [PremiumController::class, 'index']);
     Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
+    // Rute akses Admin & Librarians
     Route::get('/staff', [StaffController::class, 'index']);
+    // -----------------------------
+    // Rute akses khusus Librarians
     Route::get('/staff/librarians', [LibrarianController::class, 'index']);
     Route::get('/staff/librarians/borrowing', [LibrarianController::class, 'borrowing']);
     Route::post('/confirmBorrow/{id}', [LibrarianController::class, 'confirmBorrow']);
@@ -74,5 +78,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/staff/librarians/books', [LibrarianController::class, 'books']);
     Route::get('/staff/librarians/books/create', [LibrarianController::class, 'create']);
     Route::post('/staff/librarians/books/create', [LibrarianController::class, 'store']);
+    Route::get('/edit/{id}', [LibrarianController::class, 'edit']);
+    // ----------------------------
+    // Rute akses khusus Admin
+    Route::get('/staff/admin', [AdminController::class, 'index']);
+    Route::get('/staff/admin/library', [AdminController::class, 'library']);
+    Route::get('/staff/admin/users', [AdminController::class, 'users']);
+    Route::get('/staff/admin/admin', [AdminController::class, 'admin']);
+    Route::get('/staff/admin/librarians', [AdminController::class, 'librarians']);
+    Route::get('/staff/admin/writers', [AdminController::class, 'writers']);
+    // -----------------------
+
 });
 

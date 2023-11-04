@@ -7,9 +7,9 @@
                 <h5 class="text-xl md:text-2xl">Hi <span class="font-bold">{{ Auth::user()->fullname }}</span>, you logged as <span class="font-medium capitalize">{{ Auth::user()->role }}</span>.</h5>
                 <p class="text-slate-400">Menu yang bisa anda akses sebagai {{ Auth::user()->role }}</p>
             </div>
-            <div class="flex flex-wrap w-full mb-4 mt-10 gap-3 justify-center">
+            <div class="flex flex-wrap w-full mb-4 mt-10 gap-3 justify-center md:flex-row lg:justify-start">
                 @if(Auth::user()->role == 'admin')
-                <a href="" class="bg-purple-500 rounded-lg w-full flex flex-col hover:bg-purple-400 hover:duration-150">
+                <a href="/staff/admin" class="bg-purple-500 rounded-lg w-full flex flex-col md:w-2/6 hover:bg-purple-400 hover:duration-150">
                     <div class="p-3">
                         <h5 class="text-xl text-white font-bold border-b border-white">Admin</h5>
                     </div>
@@ -19,7 +19,7 @@
                 </a>
                 @endif
                 @if(Auth::user()->role == 'pustakawan' || Auth::user()->role == 'admin')
-                <a href="/staff/librarians" class="bg-slate-500 rounded-lg w-full flex flex-col hover:bg-slate-400 hover:duration-150">
+                <a href="/staff/librarians" class="bg-slate-500 rounded-lg w-full flex flex-col md:w-2/6 hover:bg-slate-400 hover:duration-150">
                     <div class="p-3">
                         <h5 class="text-xl text-white font-bold border-b border-white">Librarians</h5>
                     </div>

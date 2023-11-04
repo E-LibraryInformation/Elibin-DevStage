@@ -3,7 +3,7 @@
 @section('container')
     <div class="bg-slate-800 w-full h-max rounded-lg border text-slate-300">
         <div class="p-4 flex flex-col">
-            <h5 class="text-md lg:text-lg">Selamat Datang <span class="font-bold">{{ Auth::user()->fullname }}</span> di dashboard Pustakawan</h5>
+            <h5 class="text-md lg:text-lg">Selamat Datang <span class="font-bold">{{ Auth::user()->fullname }}</span> di Menu Pustakawan</h5>
             <p class="text-slate-400 text-sm lg:text-md">let's organize your library</p>
         </div>
         <div class="w-full flex justify-center lg:justify-start">
