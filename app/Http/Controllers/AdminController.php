@@ -74,4 +74,19 @@ class AdminController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'library' => 'required|max:15',
+            'alamat' => 'required',
+            'gmaps' => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Library::where('id', $id)->update($validatedData);
+
+        return redirect('/staff/admin/library')->with('success', 'Informasi Perpustakaan berhasil diperbarui!');
+    }
+
 }

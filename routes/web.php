@@ -88,11 +88,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Rute akses khusus Admin
     Route::get('/staff/admin', [AdminController::class, 'index']);
-    Route::get('/staff/admin/library', [AdminController::class, 'library']);
     Route::get('/staff/admin/users', [AdminController::class, 'users']);
     Route::get('/staff/admin/admin', [AdminController::class, 'admin']);
     Route::get('/staff/admin/librarians', [AdminController::class, 'librarians']);
     Route::get('/staff/admin/writers', [AdminController::class, 'writers']);
+    Route::get('/staff/admin/library', [AdminController::class, 'library']);
+    Route::put('/staff/admin/library/{id}', [AdminController::class, 'update']);
     // -----------------------
 
 });

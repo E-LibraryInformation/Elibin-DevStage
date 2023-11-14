@@ -31,9 +31,10 @@ class BookSeeder extends Seeder
                 'penulis' => $faker->name,
                 'rak' => 'RBUK-' . $faker->randomNumber(3),
                 'rating' => $rating,
-                'gambar' => 'https://img.freepik.com/free-vector/abstract-elegant-winter-book-cover_23-2148798745.jpg?w=2000'
-                // 'created_at' => Carbon::now(),
-                // 'updated_at' => Carbon::now()
+                'lib_id' => $faker->randomNumber(2),
+                'gambar' => 'https://img.freepik.com/free-vector/abstract-elegant-winter-book-cover_23-2148798745.jpg?w=2000',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }

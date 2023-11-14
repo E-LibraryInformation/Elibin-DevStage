@@ -23,7 +23,7 @@ class BookController extends Controller
             $books = Book::whereNotIn('id', $blacklistedBookIds)->paginate(20);
         } else {
             // Jika pengguna belum login, tampilkan semua buku
-            $books = Book::paginate(20);
+            $books = Book::get()->paginate(20);
         }
 
         return view('books.books', [

@@ -22,9 +22,11 @@ return new class extends Migration
             ]);
             $table->string('penulis', 125);
             $table->text('rak');
-            $table->string('rating', 10);
+            $table->string('rating', 10)
+            ->default(0.0);
+            $table->string('lib_id');
             $table->text('gambar');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

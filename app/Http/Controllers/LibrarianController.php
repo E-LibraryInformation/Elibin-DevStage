@@ -93,14 +93,28 @@ class LibrarianController extends Controller
         ]);
     }
 
-    // SELESAIKAN FRONTEND BARU LANJUT CRUD
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'judul' => 'required|max:40',
-    //         'sinopsis' => 'required'
-    //     ]);
-    // }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'lib_id' => 'required',
+            'judul' => 'required|max:40',
+            'sinopsis' => 'required',
+            'stok' => 'required|numeric',
+            'penulis' => 'required',
+            'rak' => 'required',
+            'gambar' => 'required|file|max:5024|mimes:jpeg,png,jpg,gif'
+        ]);
+    
+        $validatedData = $request->except('gambar');
+    
+        if ($request->file('gambar')) {
+            $validatedData['gambar'] = $request->file('gambar')->store('gambarBuku', 'public');
+        }
+    
+        Book::create($validatedData);
+    
+        return redirect('/staff/librarians/books')->with('success', 'Data buku berhasil ditambahkan');
+    }    
 
     public function edit($id)
     {

@@ -11,5 +11,10 @@ class Book extends Model
 
     protected $table = 'books';
 
-    protected $guarded = 'id';
+    protected $guarded = [
+        'id',
+        'status',
+        'created_at',
+        'updated_at'
+    ];
 }
