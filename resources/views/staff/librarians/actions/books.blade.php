@@ -25,7 +25,7 @@
                             <td> {{ strlen($book->judul) > 20 ? substr($book->judul, 0, 20) : $book->judul }}</td>
                             <td>{{ $book->penulis }}</td>
                             <td class="flex flex-col justify-center gap-1 p-2 lg:flex-row">
-                                <a href="/edit/{{ $book->id }}" class="bg-yellow-500 rounded-lg px-3 py-2 text-white hover:bg-yellow-400 hover:duration-150"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="/staff/librarians/books/edit/{{ $book->id }}" class="bg-yellow-500 rounded-lg px-3 py-2 text-white hover:bg-yellow-400 hover:duration-150"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="/delete/{{ $book->id }}" class="bg-red-500 rounded-lg px-3 py-2 text-white hover:bg-red-400 hover:duration-150"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

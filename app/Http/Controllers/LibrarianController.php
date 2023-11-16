@@ -125,5 +125,33 @@ class LibrarianController extends Controller
             'book' => $book
         ]);
     }
+    
+    public function update(Request $request, $id)
+{
+    $rules = [
+        'lib_id' => 'required',
+        'judul' => 'required|max:40',
+        'sinopsis' => 'required',
+        'stok' => 'required|numeric',
+        'penulis' => 'required',
+        'rak' => 'required',
+        'gambar' => 'sometimes|image|max:5024|mimes:jpeg,png,jpg,gif' // Adjust validation rules for the image
+    ];
+
+    $validatedData = $request->validate($rules);
+
+    if ($request->hasFile('gambar')) {
+        $image = $request->file('gambar');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->storeAs('gambarBuku', $imageName, 'public'); // Save the file in storage/app/public/gambarBuku
+        $validatedData['gambar'] = $imageName;
+    }
+
+    // Update book data
+    Book::where('id', $id)->update($validatedData);
+
+    return redirect('/staff/librarians/books')->with('success', 'Data buku berhasil diupdate!');
+}
+
 
 }

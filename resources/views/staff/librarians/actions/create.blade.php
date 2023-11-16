@@ -30,6 +30,7 @@
                     <input type="text" class="bg-slate-700 border rounded-lg p-2 focus:outline-none" placeholder="Rak" id="rak" name="rak">
                 </div>
                 <div class="flex flex-col">
+                    <label for="gambar">Gambar Buku</label>
                     <input type="file" class="bg-slate-700 border rounded-lg p-2 focus:outline-none" id="gambar" name="gambar">
                 </div>
                 <div class="flex justify-end">
