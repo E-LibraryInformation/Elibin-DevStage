@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/staff/librarians/books/create', [LibrarianController::class, 'store']);
     Route::get('/staff/librarians/books/edit/{id}', [LibrarianController::class, 'edit']);
     Route::put('/staff/librarians/books/edit/{id}', [LibrarianController::class, 'update']);
-    Route::put('/staff/librarians/books/edit/{id}', [LibrarianController::class, 'update']);
+    Route::get('/staff/librarians/books/delete/{id}', [LibrarianController::class, 'destroy']);
     // ----------------------------
 
     // Rute akses khusus Admin

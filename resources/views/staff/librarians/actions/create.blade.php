@@ -6,6 +6,11 @@
             <h5 class="text-lg font-bold lg:text-xl">Tambah Data Buku</h5>
         </div>
         <div class="p-8 border rounded-lg">
+            @if(session('successStore'))
+                <div class="my-2 bg-slate-600 border border-lime-400 rounded-lg p-2 w-full h-max">
+                    <p>{{ session('successStore') }}</p>
+                </div>
+            @endif
             <form action="" method="post" class="flex flex-col gap-3" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="lib_id" name="lib_id" value="{{ Auth::user()->id }}">

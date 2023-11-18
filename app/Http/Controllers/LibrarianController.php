@@ -7,6 +7,7 @@ use App\Models\Borrowing;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LibrarianController extends Controller
 {
@@ -108,12 +109,13 @@ class LibrarianController extends Controller
         $validatedData = $request->except('gambar');
     
         if ($request->file('gambar')) {
-            $validatedData['gambar'] = $request->file('gambar')->store('gambarBuku', 'public');
+            $path = $request->file('gambar')->store('gambarBuku', 'public');
+            $validatedData['gambar'] = '/storage/' . $path;
         }
     
         Book::create($validatedData);
     
-        return redirect('/staff/librarians/books')->with('success', 'Data buku berhasil ditambahkan');
+        return redirect()->back()->with('successStore', 'Data buku berhasil ditambahkan');
     }    
 
     public function edit($id)
@@ -127,31 +129,51 @@ class LibrarianController extends Controller
     }
     
     public function update(Request $request, $id)
-{
-    $rules = [
-        'lib_id' => 'required',
-        'judul' => 'required|max:40',
-        'sinopsis' => 'required',
-        'stok' => 'required|numeric',
-        'penulis' => 'required',
-        'rak' => 'required',
-        'gambar' => 'sometimes|image|max:5024|mimes:jpeg,png,jpg,gif' // Adjust validation rules for the image
-    ];
-
-    $validatedData = $request->validate($rules);
-
-    if ($request->hasFile('gambar')) {
-        $image = $request->file('gambar');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->storeAs('gambarBuku', $imageName, 'public'); // Save the file in storage/app/public/gambarBuku
-        $validatedData['gambar'] = $imageName;
+    {
+        $rules = [
+            'lib_id' => 'required',
+            'judul' => 'required|max:40',
+            'sinopsis' => 'required',
+            'stok' => 'required|numeric',
+            'penulis' => 'required',
+            'rak' => 'required',
+        ];
+    
+        $validatedData = $request->validate($rules);
+    
+        $book = Book::find($id);
+    
+        if ($request->hasFile('gambar')) {
+            if ($book->gambar) {
+                $oldImagePath = str_replace('/storage/', '', $book->gambar);
+                Storage::delete($oldImagePath);
+            }
+    
+            $path = $request->file('gambar')->store('gambarBuku', 'public');
+            $validatedData['gambar'] = '/storage/' . $path;
+        }
+    
+    
+        $book->update($validatedData);
+    
+        return redirect()->back()->with('successUpdate', 'Data buku berhasil diupdate!');
     }
-
-    // Update book data
-    Book::where('id', $id)->update($validatedData);
-
-    return redirect('/staff/librarians/books')->with('success', 'Data buku berhasil diupdate!');
-}
-
+    
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+    
+        if(!$book) {
+            return redirect('/staff/librarians/books')->with('errorDestroy', 'Buku tidak ditemukan!');
+        }
+    
+        if($book->gambar) {
+            Storage::delete($book->gambar);
+        }
+    
+        Book::destroy($id);
+        
+        return redirect('/staff/librarians/books')->with('successDestroy', 'Data buku berhasil dihapus!');
+    }
 
 }

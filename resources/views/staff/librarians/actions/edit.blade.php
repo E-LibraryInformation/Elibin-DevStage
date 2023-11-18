@@ -6,6 +6,11 @@
             <h5 class="text-lg font-bold lg:text-xl">Edit Data Buku</h5>
         </div>
         <div class="p-8 border rounded-lg">
+            @if(session('successUpdate'))
+                <div class="my-2 bg-slate-600 border border-yellow-400 w-full h-max p-3 rounded-lg">
+                    <p>{{ session('successUpdate') }}</p>
+                </div>
+            @endif
             <form action="" method="post" class="flex flex-col gap-3" enctype="multipart/form-data">
                 @csrf
                 @method('put')
@@ -33,6 +38,9 @@
                 <div class="flex flex-col">
                     <label for="gambar">Gambar Buku</label>
                     <input type="file" class="bg-slate-700 border rounded-lg p-2 focus:outline-none" id="gambar" name="gambar" value="{{ $book->gambar }}">
+                </div>
+                <div class="flex flex-col">
+                    <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" width="240">
                 </div>
                 <div class="flex justify-end">
                     <button type="submit" class="bg-sky-500 px-3 py-2 text-white font-medium rounded-lg hover:bg-sky-400 hover:duration-150">Edit Buku</button>

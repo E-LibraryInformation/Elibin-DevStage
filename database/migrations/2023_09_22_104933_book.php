@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('judul', 125);
+            $table->string('judul', 125)->unique();
             $table->text('sinopsis');
             $table->integer('stok');
             $table->enum('status', [
