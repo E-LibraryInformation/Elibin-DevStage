@@ -75,35 +75,35 @@
             <li>
                 <a href="/staff"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-gauge-high text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <i class="fa-solid fa-gauge-high text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white w-8"></i>
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="/staff/admin"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user-tie text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <i class="fa-solid fa-user-tie text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white w-8"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Admin</span>
                 </a>
             </li>
             <li>
                 <a href="/staff/librarians"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-chalkboard-user  text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <i class="fa-solid fa-chalkboard-user  text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white w-8"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Librarian</span>
                 </a>
             </li>
             <li>
                 <a href="/staff/admin/users"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user flex-shrink-0 text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <i class="fa-solid fa-user flex-shrink-0 text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white w-8"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap ">Users</span>
                 </a>
             </li>
             <li>
                 <a href="/"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-house flex-shrink-0 text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <i class="fa-solid fa-house flex-shrink-0 text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white w-8"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Back To Home</span>
                 </a>
             </li>

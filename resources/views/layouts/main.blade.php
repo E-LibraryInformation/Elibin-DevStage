@@ -14,8 +14,10 @@
         @yield('container')
     </div>
     {{-- @include('partials.footer') --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="{{ asset('js/profile.js') }}"></script>
     <script src="{{ asset('js/user.js') }}"></script>
+    <script src="{{ asset('js/alert.js') }}"></script>
 </body>
 </html>

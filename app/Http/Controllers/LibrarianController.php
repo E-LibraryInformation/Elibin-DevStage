@@ -76,9 +76,16 @@ class LibrarianController extends Controller
         return redirect()->back();
     }
 
-    public function books()
+    public function books(Request $request)
     {
-        $books = Book::orderBy('id', 'desc')->get();
+        $books = Book::orderBy('id', 'desc')->paginate(20);
+
+        $search = $request->input('cariData');
+
+        $books = Book::where('judul', 'like', "%$search%")
+        ->orWhere('rak', 'like', "%$search%")
+        ->paginate(20);
+
         return view('staff.librarians.actions.books', [
             'title' => 'Elibin | Managements Books',
             'active' => 'librarians',

@@ -10,6 +10,8 @@
 </head>
 <body class="bg-slate-700">
     @include('partials.sidenav')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/sidenav.js') }}"></script>
+    <script src="{{ asset('js/alert.js') }}"></script>
 </body>
 </html>
