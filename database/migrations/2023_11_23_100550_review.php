@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create("review", function (Blueprint $table) {
+            $table->id();
+            $table->integer("user_id");
+            $table->integer("book_id");
+            $table->string("review", 600);
+            $table->timestamps();
+        });
     }
 
     /**

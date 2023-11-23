@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upgrade', [PremiumController::class, 'index']);
     Route::get('/books/borrow/{id}', [BookController::class , 'borrow']);
     Route::post('/books/borrow/{id}', [BookController::class , 'borrowStore']);
+    Route::post('/books/review/{id}', [BookController::class , 'review']);
 
     // Rute akses Admin & Librarians
     Route::get('/staff', [StaffController::class, 'index']);

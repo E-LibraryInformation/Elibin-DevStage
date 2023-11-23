@@ -6,8 +6,10 @@ use App\Models\Book;
 use App\Models\Blacklist;
 use App\Models\Bookmark;
 use App\Models\Borrow;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -23,7 +25,7 @@ class BookController extends Controller
             $books = Book::whereNotIn('id', $blacklistedBookIds)->paginate(20);
         } else {
             // Jika pengguna belum login, tampilkan semua buku
-            $books = Book::get()->paginate(20);
+            $books = Book::paginate(20);
         }
 
         return view('books.books', [
@@ -53,12 +55,17 @@ class BookController extends Controller
             ->where('book_id', $bookId)
             ->exists();
 
+        // Review 
+        // Ambil data buku yang di review berdasarkan id
+        $reviews = Review::where('book_id', $id)->paginate(10);
+
         return view('books.book', [
             'title' => 'Elibin | Detail',
             'active' => 'books',
             'book' => $book,
             'bookIsBlacklisted' => $bookIsBlacklisted,
-            'bookIsBookmarked' => $bookIsBookmarked
+            'bookIsBookmarked' => $bookIsBookmarked,
+            'reviews' => $reviews
         ]);
     }
 
@@ -173,6 +180,25 @@ class BookController extends Controller
     
         return redirect('/books')->with('successBorrow', 'Buku berhasil dipinjam, liat proses peminjaman buku');
     }
-    
+
+    public function review(Request $request, $id)
+    {
+        $request->validate([
+            'review' => 'required|max:600',
+        ]);
+
+        $userId = Auth::user()->id;
+        $bookId = $id;
+        $review = $request->input('review');
+
+        Review::create([
+            'user_id' => $userId,
+            'book_id' => $bookId,
+            'review' => $review
+        ]);
+
+        return redirect()->back()->with('successReview', 'Review anda sudah terkirim. Terimakasih');
+
+    }
 
 }
