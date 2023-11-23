@@ -34,9 +34,19 @@ class AdminController extends Controller
         ]);
     }
 
-    public function users()
+    public function users(Request $request)
     {
         $users = User::where('role', 'pembaca')->paginate(20);
+
+        $search = $request->input('searchUser');
+
+        $users = User::where('role', 'pembaca')
+            ->where(function ($query) use ($search) {
+                $query->where('fullname', 'like', "%$search%")
+                    ->orWhere('username', 'like', "%$search%");
+            })
+            ->paginate(20);
+
         return view('staff.admin.actions.users', [
             'title' => 'Elibin | Users List',
             'active' => 'admin',
@@ -44,9 +54,19 @@ class AdminController extends Controller
         ]);
     }
 
-    public function admin()
+    public function admin(Request $request)
     {
         $users = User::where('role', 'admin')->paginate(20);
+
+        $search = $request->input('searchUser');
+
+        $users = User::where('role', 'admin')
+            ->where(function ($query) use ($search) {
+                $query->where('fullname', 'like', "%$search%")
+                    ->orWhere('username', 'like', "%$search%");
+            })
+            ->paginate(20);
+
         return view('staff.admin.actions.admin', [
             'title' => 'Elibin | Admin List',
             'active' => 'admin',
@@ -54,9 +74,19 @@ class AdminController extends Controller
         ]);
     }
 
-    public function librarians()
+    public function librarians(Request $request)
     {
         $users = User::where('role', 'pustakawan')->paginate(20);
+
+        $search = $request->input('searchUser');
+
+        $users = User::where('role', 'pustakawan')
+            ->where(function ($query) use ($search) {
+                $query->where('fullname', 'like', "%$search%")
+                    ->orWhere('username', 'like', "%$search%");
+            })
+            ->paginate(20);
+
         return view('staff.admin.actions.librarians', [
             'title' => 'Elibin | Librarians List',
             'active' => 'admin',
@@ -64,9 +94,19 @@ class AdminController extends Controller
         ]);
     }
 
-    public function writers()
+    public function writers(Request $request)
     {
         $users = User::where('role', 'penulis')->paginate(20);
+
+        $search = $request->input('searchUser');
+
+        $users = User::where('role', 'penulis')
+            ->where(function ($query) use ($search) {
+                $query->where('fullname', 'like', "%$search%")
+                    ->orWhere('username', 'like', "%$search%");
+            })
+            ->paginate(20);
+
         return view('staff.admin.actions.writers', [
             'title' => 'Elibin | Writers List',
             'active' => 'admin',
@@ -89,4 +129,12 @@ class AdminController extends Controller
         return redirect('/staff/admin/library')->with('success', 'Informasi Perpustakaan berhasil diperbarui!');
     }
 
+    public function roleUpdate(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->role = $request->input('role');
+        $user->save();
+
+        return redirect()->back()->with('successRole', 'Peran pengguna berhasil diperbarui!');
+    }
 }

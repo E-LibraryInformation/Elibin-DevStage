@@ -6,7 +6,7 @@
             <h5 class="text-lg font-bold">List Table Librarians</h5>
         </div>
         <div class="w-full p-4">
-            <form action="/staff/admin/users/search" method="get" class="w-full">
+            <form action="" method="get" class="w-full">
                 @csrf
                 <div class="flex flex-row w-full">
                     <input type="text" name="searchUser" id="searchUser" class="w-full p-2 bg-slate-700 border rounded-l-lg focus:outline-sky-500" placeholder="Cari Pustakawan...">
@@ -27,10 +27,10 @@
                         <td class="p-1">{{ $user->fullname }}</td>
                         <td class="p-1">{{ $user->username }}</td>
                         <td class="p-1 flex flex-col justify-center items-center gap-1 lg:flex-row">
-                            <form action="/staff/admin/users/role/{{ $user->id }}">
+                            <form action="/staff/admin/users/role/{{ $user->id }}" method="post" id="roleForm{{ $user->id }}">
                                 @csrf
                                 @method('PUT')
-                                <select name="role" id="role" class="bg-slate-700 uppercase p-2 rounded-lg w-full">
+                                <select name="role" id="role{{ $user->id }}" class="bg-slate-700 uppercase p-2 rounded-lg w-full">
                                     <option value="{{ $user->role }}" selected>{{ $user->role }}</option>
                                     <option value="pembaca">pembaca</option>
                                     <option value="penulis">penulis</option>

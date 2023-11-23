@@ -17,7 +17,7 @@ class BookSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         foreach(range(1, 20) as $index) {
-            $stok = $faker->numberBetween(0, 10); // Menghasilkan angka acak antara 0 dan 10
+            $stok = $faker->numberBetween(0, 200); // Menghasilkan angka acak antara 0 dan 10
             $status = ($stok === 0) ? 'Unavailable' : 'Available';
 
             $rating = $faker->randomFloat(1, 0, 5);

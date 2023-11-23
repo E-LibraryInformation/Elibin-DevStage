@@ -64,7 +64,6 @@ class LibrarianController extends Controller
         ]);
     }
 
-
     public function confirmEnd($id)
     {
         $borrowing = Borrowing::find($id);

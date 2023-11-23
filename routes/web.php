@@ -96,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/staff/admin/writers', [AdminController::class, 'writers']);
     Route::get('/staff/admin/library', [AdminController::class, 'library']);
     Route::put('/staff/admin/library/{id}', [AdminController::class, 'update']);
+    Route::put('/staff/admin/users/role/{id}', [AdminController::class, 'roleUpdate']);
     // -----------------------
 
 });
