@@ -11,13 +11,13 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="py-3">
-                                Book
-                            </th>
-                            <th scope="col" class="py-3">
-                                Fullname
+                                Judul
                             </th>
                             <th scope="col" class="py-3">
                                 Username
+                            </th>
+                            <th scope="col" class="py-3">
+                                Tanggal
                             </th>
                             <th>
                                 Hari
@@ -32,35 +32,46 @@
                     </thead>
                     <tbody>
                         @foreach ($borrowings as $borrowing)
+                            @php
+                                $createdAt = \Carbon\Carbon::parse($borrowing->created_at);
+                                $now = \Carbon\Carbon::now();
+                                $borrowedDays = $borrowing->hari; // Batas waktu peminjaman dalam hari
+                                $daysPassed = $createdAt->diffInDays($now); // Menghitung perbedaan hari dari created_at hingga sekarang
+
+                                // Menghitung sisa hari yang tersedia untuk pengembalian
+                                $remainingDays = $borrowedDays - $daysPassed;
+                                $isLate = $remainingDays <= 0; // Jika sisa hari kurang dari atau sama dengan 0, berarti telat
+                                $daysToShow = $isLate ? abs($remainingDays) : $remainingDays; // Nilai yang ditampilkan
+
+                                // Jika nilai $daysToShow negatif, atur ke 0 untuk menghindari angka negatif yang tidak masuk akal
+                                $daysToShow = max(0, $daysToShow);
+
+                                // Mengubah status menjadi "TELAT" jika sisa hari sudah 0 atau negatif
+                                $status = $isLate ? 'TELAT' : 'DIPINJAM';
+                            @endphp
+
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="py-4 font-bold text-white">
-                                    {{ $borrowing->book->judul }} <!-- Akses atribut book -->
+                                    {{ $borrowing->book->judul }}
                                 </td>
                                 <td class="py-4">
-                                    {{ $borrowing->user->fullname }} <!-- Akses atribut user -->
+                                    {{ $borrowing->user->username }}
                                 </td>
                                 <td class="py-4">
-                                    {{ $borrowing->user->username }} <!-- Akses atribut user -->
+                                    {{ $borrowing->created_at }}
                                 </td>
-                                <td class="py-4">
-                                    @php
-                                        $adjustedTime = now()->subMinutes(60);
-                                        $daysLeft = $borrowing->hari - now()->diffInDays($adjustedTime);
-                                        $textColor = $daysLeft >= 0 ? 'text-sky-500' : 'text-red-500';
-                                        echo '<span class="' . $textColor . '">' . $daysLeft . '</span>';
-                                    @endphp
+                                <td class="py-4 {{ $isLate ? 'text-red-400' : 'text-lime-400' }}">
+                                    {{ $daysToShow }}
                                 </td>
-                                <td class="py-4 font-bold">
-                                    @php
-                                        $status = $daysLeft >= 0 ? 'DIPINJAM' : 'OVERDUE';
-                                        $textColorStatus = $status === 'DIPINJAM' ? 'text-lime-500' : 'text-red-500';
-                                        echo '<span class="' . $textColorStatus . '">' . $status . '</span>';
-                                    @endphp
+                                <td class="py-4 font-bold {{ $isLate ? 'text-red-400' : 'text-lime-400' }}">
+                                    {{ $isLate ? 'TELAT' : 'DIPINJAM' }}
                                 </td>
                                 <td>
                                     <form action="/confirmEnd/{{ $borrowing->id }}" method="post">
                                         @csrf
-                                        <button class="py-0 text-sky-500 border-b border-sky-500 hover:text-sky-400 hover:border-sky-400 hover:duration-150">sudah dikembalikan</button>
+                                        <button
+                                            class="py-0 text-sky-500 border-b border-sky-500 hover:text-sky-400 hover:border-sky-400 hover:duration-150">sudah
+                                            dikembalikan</button>
                                     </form>
                                 </td>
                             </tr>
