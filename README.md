@@ -4,7 +4,7 @@
 
 ![git](https://git-scm.com/images/logo@2x.png)
 
-<p color="yellow">Note: Pastikan PHP, Composer, NodeJS, dan koneksi MySql sudah terinstall dan terkoneksi ke perangkat.</p>
+<p style="color: yellow;">Note: Pastikan PHP, Composer, NodeJS, dan koneksi MySql sudah terinstall dan terkoneksi ke perangkat.</p>
 
 1. Buka terminal.
 2. cd ke folder yang menyimpan project Laravel kalian.
