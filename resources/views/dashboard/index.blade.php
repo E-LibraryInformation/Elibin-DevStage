@@ -17,7 +17,7 @@
                     <div>
                         <div class="p-4 flex justify-center flex-wrap gap-6">
                             @foreach($books as $book)
-                            <a href="/book/{{ $book->id }}" class="bg-white dark:bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+                            <a href="/book/{{ $book->id }}" class="bg-white dark:bg-slate-800 rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                                 <div>
                                     <img src="{{ $book->gambar }}" alt="{{ $book->judul }}" class="w-48">
                                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="md:p-4 flex flex-wrap justify-center gap-4">
                         @foreach ($writers as $writer)
-                        <a href="/profile/{{ $writer->id }}" class="bg-white dark:bg-slate-800 border border-white rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
+                        <a href="/profile/{{ $writer->id }}" class="bg-white dark:bg-slate-800 rounded-lg w-2/5 h-max overflow-hidden md:w-48 md:h-max hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500 hover:duration-200">
                             <div>
                                 <img src="{{ $writer->gambar }}" alt="{{ $writer->fullname }}" class="w-48">
                             </div>
