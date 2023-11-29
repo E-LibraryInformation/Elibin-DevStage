@@ -1,16 +1,13 @@
 ## Installation First
 
 **WARNING:** If you haven't installed Git, please install it first from [Download GIT](https://git-scm.com/)
-
-![git](https://git-scm.com/images/logo@2x.png)
-
-<p style="color: yellow;">Note: Pastikan PHP, Composer, NodeJS, dan koneksi MySql sudah terinstall dan terkoneksi ke perangkat.</p>
+**WARNING:** If you haven't installed Composer, please install it first from [Download Composer](https://getcomposer.org/)
 
 1. Buka terminal.
 2. cd ke folder yang menyimpan project Laravel kalian.
 3. Jalankan perintah berikut:
     ```
-    git clone https://github.com/elylialya/Elibin.git
+    git clone https://github.com/E-LibraryInformation/Elibin-DevStage.git`
     ```
 4. Jalankan perintah berikut:
     ```
