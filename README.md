@@ -9,7 +9,7 @@
 2. cd ke folder yang menyimpan project Laravel kalian.
 3. Jalankan perintah berikut untuk cloning repository ke direktori kalian:
     ```
-    git clone https://github.com/E-LibraryInformation/Elibin-DevStage.git`
+    git clone https://github.com/E-LibraryInformation/Elibin-DevStage.git
     ```
 4. Jalankan perintah berikut untuk menginstall dependensi laravel:
     ```
